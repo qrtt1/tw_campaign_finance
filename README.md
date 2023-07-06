@@ -7,14 +7,21 @@ Install dbt:
 ```
 python3 -m venv venv
 source venv/bin/activate
-source venv/bin/activate
 
 pip install dbt-duckdb
 ```
 
+Prepare an empty database:
+
+```
+mkdir -p tmp && python -c "import duckdb; duckdb.connect('tmp/duckdb.db').close()"
+```
+
 ### Using the project
 
-Download the incomes & expenditures csv from: https://g0v.hackmd.io/gGGUBDEXQOKGL_feUpPekg
+Download the incomes & expenditures csv under the path `data/` 
+* https://lydata.ronny-s3.click/incomes.csv
+* https://lydata.ronny-s3.click/expenditures.csv
 
 Try running the following commands:
 - dbt seed
@@ -22,6 +29,9 @@ Try running the following commands:
 - dbt test
 
 The resulting parquet files will be available under `target/`.
+
+
+Data source could be found at: https://g0v.hackmd.io/gGGUBDEXQOKGL_feUpPekg
 
 ###
 
